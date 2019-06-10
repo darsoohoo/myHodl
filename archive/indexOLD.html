@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>css grids</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./add-to-shopping-cart.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <div id="header-phrase">coinbase</div>
+    <nav>
+      <a href="#">Home</a> |
+      <a href="#">Portfolio</a> |
+      <a href="#">Log In</a>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    <div class="mainsec">
+      <h1>Live Coin Prices</h1>
+      <div class="chart">
+        <table>
+          <thead>
+            <th class="item"></th>
+            <th class="name">Name</th>
+            <th class="description">Description</th>
+            <th class="price">Price</th>
+            <th class="add">Add to cart</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img class="symbol" src="https://www.coinbase.com/assets/assets/1-8022fd53c251f18cb39cefede445f1c78a3b265989232f0bb46b9c4622e55a9e.png" alt="bitcoin logo"></td>
+              <td class="sym">BTC</td>
+              <td>This is a Bitcoin</td>
+              <td id="btc-price"></td>
+              <td><button onclick="addBitcoin()">Buy Bitcoin</button></td>
+            </tr>
+
+            <tr>
+              <td><img class="symbol" src="https://www.coinbase.com/assets/assets/52-477a90ea7736b8757b093acef507a9aab6968e7b564e52716deb3803160ee49a.png" alt="ethereum logo"></td>
+              <td>XRP</td>
+              <td>This is XRP the best</td>
+              <td id="xrp-price">$.34</td>
+              <td><button onclick="addXRP()" type="button">Buy XRP</button></td>
+            </tr>
+            <tr>
+              <td><img class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+              <td>ETH</td>
+              <td>This is Ethereum. It's pretty cool.</td>
+              <td id="eth-price">$124</td>
+              <td><button onclick="addEthereum()" type="button">Buy Ethereum</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>Your Cart</h2>
+        <table id="myCart">
+          <tr id="myRow">
+            <th class="sym">Name</th>
+            <th class="description">Description</th>
+            <th class="price">Price</th>
+            <th class="remove">Cart Items</th>
+          </tr>
+        </table>
+        <div id="total"></div>
+        <div id="all-coins"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script type="text/javascript">
+
+
+function reqListener() {
+  let data = JSON.parse(this.responseText);
+  let list = document.getElementById("all-coins")
+
+  //LOOP THROUGH OBJECT AND CREATE A LIST ITEM FOR EACH ONE
+  for(var i = 0; i < data.length; i++){
+    
+    //GET LAST LIVE PRICE OF COIN FROM OBJECT ARRAY AND SET TO LOCAL VARIABLES
+    let btc = data[11].lastPrice;
+    let xrp = data[308].lastPrice;
+    let eth = data[12].lastPrice;
+    
+    
+    //GET THE HTML ELEMENT FOR THE PRICE DISPLAY
+    let btcTd = document.getElementById('btc-price');
+    let xrpTd = document.getElementById('xrp-price');
+    let ethTd = document.getElementById('eth-price');
+    
+    
+    //APPEND COIN PRICE TO THE HTML ELEMENT TO DISPLAY THE COIN PRICE
+    btcTd.innerText = btc;
+    xrpTd.innerText = xrp;
+    ethTd.innerText = eth;
+    
+    //CALL THE FUNCTION AND PASS LOCAL VARIABLES TO SET GLOBAL VARIABLES FOR LIVE COIN PRICE
+    setBTCPrice(btc);
+    setXRPPrice(xrp);
+    setETHPrice(eth);
+    
+    //CREATE A LIST TO DISPLAY ALL COIN PRICES AT BOTTOM OF PAGE
+    //let items = document.createElement('li');
+    //list.appendChild(items);
+    //items.appendChild(document.createTextNode(data[i].symbol + " : $" + data[i].lastPrice));
+    
+    // ATTEMPTING TO FIND INDEX OF THE XRPUSDT IN THE OBJECT ARRAY
+    //index = data.findIndex(x => x.symbol=="XRPUSDT");
+    //console.log(index);
+    //console.log(data[12].lastPrice);
+    //console.log(data[308].lastPrice);
+   //console.log(data[308].symbol);
+  }
+}
+
+
+//SETS THE GLOBAL VARIABLE OF LIVE BITCOIN PRICE SO IT CAN BE USED IN THE add-to-shopping-cart CLASS
+var liveBTC = 0;
+function setBTCPrice(price){
+  liveBTC = price;
+  console.log('livebtc: '+ liveBTC);
+}
+
+var liveXRP = 0;
+function setXRPPrice(price){
+  liveXRP = price;
+  console.log('liveXRP: '+ liveXRP);
+}
+
+var liveETH = 0;
+function setETHPrice(price){
+  liveETH = price;
+  console.log('liveeth: '+ liveETH);
+}
+
+
+
+function reqError(err) {
+  console.log('Fetch Error :-S', err);
+}
+
+var oReq = new XMLHttpRequest();
+oReq.onload = reqListener;
+oReq.onerror = reqError;
+oReq.open('get', 'https://api.binance.com/api/v1/ticker/24hr', true);
+oReq.send();
+
+  </script>
+  </body>
+</html>

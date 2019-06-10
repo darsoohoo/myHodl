@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css grids</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-light_blue.min.css" />
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./add-to-shopping-cart.js"></script>
+</head>
+<body>
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">myHodl</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Home</a>
+        <a class="mdl-navigation__link" href="">Portfolio</a>
+        <a class="mdl-navigation__link" href="">About Me</a>
+        <a class="mdl-navigation__link" href=""><i class="material-icons">shopping_cart</i>Checkout</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">myHodl</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Home</a>
+      <a class="mdl-navigation__link" href="">Portfolio</a>
+      <a class="mdl-navigation__link" href="">About Me</a>
+      <a class="mdl-navigation__link" href="">Checkout</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content ">
+      <!-- Your content goes here -->
+      <div class="flex-container">
+        <div>
+        <table class="mdl-data-table mdl-js-data-table mdl-button--colored" >
+          <thead><h2>Binance Wallet</h2></thead>
+          <thead>
+            <th class="item"></th>
+            <th class="name">Name</th>
+            <th class="description">Description</th>
+            <th class="price">Amount</th>
+            <th class="add">USD</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1-8022fd53c251f18cb39cefede445f1c78a3b265989232f0bb46b9c4622e55a9e.png" alt="bitcoin logo"></td>
+              <td class="sym">BTC</td>
+              <td>This is a Bitcoin</td>
+              <td id="btc-wallet"></td>
+              <td><button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addBitcoin()" type="button">Buy</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td><img height="42" width="42" class="symbol" src="https://dynamic-assets.coinbase.com/e81509d2307f706f3a6f8999968874b50b628634abf5154fc91a7e5f7685d496a33acb4cde02265ed6f54b0a08fa54912208516e956bc5f0ffd1c9c2634099ae/asset_icons/3af4b33bde3012fd29dd1366b0ad737660f24acc91750ee30a034a0679256d0b.png" alt="xrp logo"></td>
+              <td>XRP</td>
+              <td>This is XRP</td>
+              <td id="xrp-wallet">$.34</td>
+              <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addXRP()" type="button">Buy</button></td>
+            </tr>
+            <tr>
+              <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+              <td>ETH</td>
+              <td>This is Ethereum</td>
+              <td id="eth-wallet"></td>
+              <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+            </tr>
+            <tr>
+              <td><img height="42" width="42" class="symbol" src="https://cdn2.iconfinder.com/data/icons/cryptocurrency-20/512/crypto-cryptocurrency-coin-digital-trading-20-512.png" alt="cardano logo"></td>
+              <td>ADA</td>
+              <td>This is Cardano</td>
+              <td id="ada-wallet"></td>
+              <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addCardano()" type="button">Buy</button></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </div>
+
+
+      </div>
+       <h3 class="flex-container">Your Cart </h3>
+      <div class="flex-container">
+      <table class="mdl-data-table mdl-js-data-table" id="myCart">
+        <tr id="myRow">
+          <th></th>
+          <th class="sym">Name</th>
+          <th class="description">Description</th>
+          <th class="price">Price</th>
+          <th class="remove">Cart Items</th>
+        </tr>
+        </table>
+      </div>
+    </div>
+    <div class="total-flex-container">
+    <h4 id="total"></h4>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="checkout()" type="button">
+    <i class="material-icons">shopping_cart</i>Checkout</button>
+    </div>
+  </div>
+  </main>
+</div>
+
+
+<script src="config.js" src="config.js"></script>
+<script type="text/javascript" src="crypto-js.js"></script>
+<script>
+
+function reqListener() {
+  let data = JSON.parse(this.responseText);
+  let list = document.getElementById("all-coins")
+  console.log(data);
+  console.log(data.balances[0].free);
+
+  //LOOP THROUGH OBJECT AND CREATE A LIST ITEM FOR EACH ONE
+  for(var i = 0; i < 1; i++){
+
+   //GET LAST LIVE PRICE OF COIN FROM OBJECT ARRAY AND SET TO LOCAL VARIABLES
+    let btc = data.balances[0].free;
+    let xrp = data.balances[60].free;
+    let eth = data.balances[2].free;
+    let ada = data.balances[85].free;
+
+
+    //GET THE HTML ELEMENT FOR THE PRICE DISPLAY
+    let btcTd = document.getElementById('btc-wallet');
+    let xrpTd = document.getElementById('xrp-wallet');
+    let ethTd = document.getElementById('eth-wallet');
+    let adaTd = document.getElementById('ada-wallet');
+
+
+    //APPEND COIN PRICE TO THE HTML ELEMENT TO DISPLAY THE COIN PRICE
+    btcTd.innerText = btc;
+    xrpTd.innerText = xrp;
+    ethTd.innerText = eth;
+    adaTd.innerText = ada;
+
+
+ }
+}
+
+
+function reqError(err) {
+  console.log('Fetch Error :-S', err);
+}
+
+
+    var burl = 'https://api.binance.com';
+    var endPoint = '/api/v3/account';
+    var dataQueryString = 'recvWindow=20000&timestamp=' + Date.now();
+    var keys = {
+        'akey' : config.aKey,
+        'skey' : config.sKey
+    }
+    var signature = CryptoJS.HmacSHA256(dataQueryString ,keys['skey']).toString(CryptoJS.enc.Hex);
+    var url = burl + endPoint + '?' + dataQueryString + '&signature=' + signature;
+    var ourRequest = new XMLHttpRequest();
+
+    ourRequest.onload = reqListener;
+    ourRequest.onerror = reqError;
+
+    ourRequest.open('GET', url, true);
+    ourRequest.setRequestHeader('X-MBX-APIKEY',keys['akey']);
+    ourRequest.send();
+</script>
+
+</body>
+</html>
