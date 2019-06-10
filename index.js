@@ -9,7 +9,7 @@ const {app, BrowserWindow} = require('electron')
     win = new BrowserWindow({width: 800, height: 600})
   
     // and load the index.html of the app.
-    win.loadFile('demo.html')
+    win.loadFile('coinbase.html')
   
     // Open the DevTools.
     win.webContents.openDevTools()

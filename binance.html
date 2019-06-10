@@ -156,12 +156,12 @@ function reqError(err) {
 }
 
 
-    var burl = 'https://api.binance.com';
+    var burl = 'https://api-public.sandbox.pro.coinbase.com';
     var endPoint = '/api/v3/account';
     var dataQueryString = 'recvWindow=20000&timestamp=' + Date.now();
     var keys = {
-        'akey' : config.aKey,
-        'skey' : config.sKey
+        'akey' : config.binanceAkey,
+        'skey' : config.binanceSkey
     }
     var signature = CryptoJS.HmacSHA256(dataQueryString ,keys['skey']).toString(CryptoJS.enc.Hex);
     var url = burl + endPoint + '?' + dataQueryString + '&signature=' + signature;
