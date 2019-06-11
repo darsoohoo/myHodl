@@ -17,27 +17,18 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">coinbase</span>
+      <span class="mdl-layout-title">myhodl</span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="">Home</a>
-        <a class="mdl-navigation__link" href="">Portfolio</a>
-        <a class="mdl-navigation__link" href="">About Me</a>
-        <a class="mdl-navigation__link" href=""><i class="material-icons">shopping_cart</i>Checkout</a>
+        <a class="mdl-navigation__link" href="">Prices</a>
+        <a href="binance.html" class="mdl-navigation__link">Binance</a>
+        <a class="mdl-navigation__link" href="coinbase.html">Coinbase</a>
       </nav>
     </div>
   </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">coinbase</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Home</a>
-      <a class="mdl-navigation__link" href="">Portfolio</a>
-      <a class="mdl-navigation__link" href="">About Me</a>
-      <a class="mdl-navigation__link" href="">Checkout</a>
-    </nav>
-  </div>
+
   <main class="mdl-layout__content">
     <div class="page-content ">
       <!-- Your content goes here -->
@@ -59,62 +50,50 @@
               <td>This is a Bitcoin</td>
               <td id="btc-price"></td>
               <td><button id="demo-show-toast" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addBitcoin()" type="button">Buy</button>
-              <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-                <div class="mdl-snackbar__text"></div>
-                <button class="mdl-snackbar__action" type="button"></button>
-              </div>
-<script>
-(function() {
-  'use strict';
-  window['counter'] = 0;
-  var snackbarContainer = document.querySelector('#demo-toast-example');
-  var showToastButton = document.querySelector('#demo-show-toast');
-  showToastButton.addEventListener('click', function() {
-    'use strict';
-    var data = {message: ++counter + ' Bitcoin(s)'};
-    snackbarContainer.MaterialSnackbar.showSnackbar(data);
-  });
-}());
-</script>
+
 
               </td>
             </tr>
 
             <tr>
-              <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/52-477a90ea7736b8757b093acef507a9aab6968e7b564e52716deb3803160ee49a.png" alt="ethereum logo"></td>
+              <td><img height="42" width="42" class="symbol" src="https://dynamic-assets.coinbase.com/e81509d2307f706f3a6f8999968874b50b628634abf5154fc91a7e5f7685d496a33acb4cde02265ed6f54b0a08fa54912208516e956bc5f0ffd1c9c2634099ae/asset_icons/3af4b33bde3012fd29dd1366b0ad737660f24acc91750ee30a034a0679256d0b.png" alt="xrp logo"></td>
               <td>XRP</td>
               <td>This is XRP</td>
-              <td id="xrp-price">$.34</td>
+              <td id="xrp-price"></td>
               <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addXRP()" type="button">Buy</button></td>
             </tr>
             <tr>
               <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
               <td>ETH</td>
               <td>This is Ethereum</td>
-              <td id="eth-price">$124</td>
+              <td id="eth-price"></td>
               <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
             </tr>
+            <tr>
+                <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+                <td>ADA</td>
+                <td>This is Cardano</td>
+                <td id="ada-price"></td>
+                <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+              </tr>
+              <tr>
+                  <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+                  <td>LTC</td>
+                  <td>This is Litecoin</td>
+                  <td id="ltc-price"></td>
+                  <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+                </tr>
+                <tr>
+                    <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+                    <td>XLM</td>
+                    <td>This is Stellar</td>
+                    <td id="xlm-price"></td>
+                    <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+                  </tr>
           </tbody>
         </table>
         </div>
         </div>
-         <h3 class="flex-container">Your Cart </h3>
-        <div class="flex-container">
-        <table class="mdl-data-table mdl-js-data-table" id="myCart">
-          <tr id="myRow">
-            <th></th>
-            <th class="sym">Name</th>
-            <th class="description">Description</th>
-            <th class="price">Price</th>
-            <th class="remove">Cart Items</th>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="total-flex-container">
-    <h4 id="total"></h4>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="checkout()" type="button">
-    <i class="material-icons">shopping_cart</i>Checkout</button>
     </div>
   </div>
   </main>
