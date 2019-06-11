@@ -1,14 +1,15 @@
 # myHodl
-A simple app I created at the beginning of my coding bootcamp
+A personal desktop application I created for my coding bootcamp.
 
 # To get started
 
-Be sure to add your own API keys
-Create a config.js file
+Be sure to add your own API keys.
 
 
-Get your Binance API key from Binance.com and your Coinbase API Key from https://pro.coinbase.com/profile/api
+Get your Binance API key from https://www.binance.com/en and your Coinbase API Key from https://pro.coinbase.com/profile/api
 
+
+Create a config.js file and add your own API keys. 
 ```
 const config = { // this should be const instead if you're using ES6 standards
   binanceAkey : '<Binance API Key>',
