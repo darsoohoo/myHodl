@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>css grids</title>
+  <title>my Hodl</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-light_blue.min.css" />
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <link rel="stylesheet" href="css/style.css">
-  <script src="./add-to-shopping-cart.js"></script>
+  <script src="livePrices.js"></script>
 </head>
 <body>
 
@@ -70,25 +70,25 @@
               <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
             </tr>
             <tr>
-                <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+                <td><img height="42" width="42" class="symbol" src="https://cdn2.iconfinder.com/data/icons/cryptocurrency-20/512/crypto-cryptocurrency-coin-digital-trading-20-512.png" alt="ethereum logo"></td>
                 <td>ADA</td>
                 <td>This is Cardano</td>
                 <td id="ada-price"></td>
-                <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+                <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addCardano()" type="button">Buy</button></td>
               </tr>
               <tr>
-                  <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+                  <td><img height="42" width="42" class="symbol" src="http://www.sealheatingandairconditioning.com/wp-content/uploads/2017/11/Litecoin-Color-Logo.png" alt="litecoin logo"></td>
                   <td>LTC</td>
                   <td>This is Litecoin</td>
                   <td id="ltc-price"></td>
-                  <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+                  <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addLitecoin()" type="button">Buy</button></td>
                 </tr>
                 <tr>
-                    <td><img height="42" width="42" class="symbol" src="https://www.coinbase.com/assets/assets/1027-99bf2102cc13a51bb226f931b8d0fa4c5b3ca9dc4179167e89d7ee3f677c3fdb.png" alt="ethereum logo"></td>
+                    <td><img height="42" width="42" class="symbol" src="https://cdn-images-1.medium.com/max/1600/0*TrxD0yql5KqsFrLN.png" alt="stellar logo"></td>
                     <td>XLM</td>
                     <td>This is Stellar</td>
                     <td id="xlm-price"></td>
-                    <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addEthereum()" type="button">Buy</button></td>
+                    <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="addStellar()" type="button">Buy</button></td>
                   </tr>
           </tbody>
         </table>
@@ -98,70 +98,6 @@
   </div>
   </main>
 </div>
-  <script type="text/javascript">
-  function reqListener() {
-    let data = JSON.parse(this.responseText);
-    let list = document.getElementById("all-coins")
-
-    //LOOP THROUGH OBJECT AND CREATE A LIST ITEM FOR EACH ONE
-    for(var i = 0; i < 1; i++){
-
-     //GET LAST LIVE PRICE OF COIN FROM OBJECT ARRAY AND SET TO LOCAL VARIABLES
-      let btc = data[11].lastPrice;
-      let xrp = data[308].lastPrice;
-      let eth = data[12].lastPrice;
-
-
-      //GET THE HTML ELEMENT FOR THE PRICE DISPLAY
-      let btcTd = document.getElementById('btc-price');
-      let xrpTd = document.getElementById('xrp-price');
-      let ethTd = document.getElementById('eth-price');
-
-
-      //APPEND COIN PRICE TO THE HTML ELEMENT TO DISPLAY THE COIN PRICE
-      btcTd.innerText = btc;
-      xrpTd.innerText = xrp;
-      ethTd.innerText = eth;
-
-      //CALL THE FUNCTION AND PASS LOCAL VARIABLES TO SET GLOBAL VARIABLES FOR LIVE COIN PRICE
-      setBTCPrice(btc);
-      setXRPPrice(xrp);
-      setETHPrice(eth);
-
-   }
-  }
-
-
-  //SETS THE GLOBAL VARIABLE OF LIVE BITCOIN PRICE SO IT CAN BE USED IN THE add-to-shopping-cart CLASS
-  var liveBTC = 0;
-  function setBTCPrice(price){
-   liveBTC = price;
-   console.log('livebtc: '+ liveBTC);
-  }
-
-  var liveXRP = 0;
-  function setXRPPrice(price){
-    liveXRP = price;
-   console.log('liveXRP: '+ liveXRP);
-  }
-
-  var liveETH = 0;
-  function setETHPrice(price){
-   liveETH = price;
-    console.log('liveeth: '+ liveETH);
-  }
-
-
-
-  function reqError(err) {
-    console.log('Fetch Error :-S', err);
-  }
-
-  var oReq = new XMLHttpRequest();
-  oReq.onload = reqListener;
-  oReq.onerror = reqError;
-  oReq.open('get', 'https://api.binance.com/api/v1/ticker/24hr', true);
-  oReq.send();
-    </script>
+  
   </body>
 </html>
